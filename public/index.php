@@ -3,7 +3,7 @@
         <h2>Velkommen til Norge.no</h2>
         <?php
         echo "<p>Hovedstaden i Norge er: ";
-        echo "<strong>Oslo</strong>";
+        echo "<strong>Oslo JA</strong>";
         echo "<br />";
         phpinfo();
         ?>

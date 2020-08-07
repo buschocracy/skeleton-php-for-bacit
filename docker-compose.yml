@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: container-build/web/Dockerfile
     environment:
-    - MYSQL_DATABASE=ergotests
+    - MYSQL_DATABASE=maindb
     - MYSQL_USER=bacit
     - MYSQL_PASSWORD=BACIT2020
     - MYSQL_HOST=db
@@ -25,7 +25,7 @@ services:
     - MYSQL_ROOT_PASSWORD=BSBACIT2020
     - MYSQL_USER=dbuser
     - MYSQL_PASSWORD=BACIT2020
-    - MYSQL_DATABASE=ergotests
+    - MYSQL_DATABASE=maindb
     volumes:
     - "mysql_data:/var/lib/mysql"
     # - ./data/schema.sql:/docker-entrypoint-initdb.d/schema.sql

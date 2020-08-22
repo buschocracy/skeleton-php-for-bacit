@@ -65,6 +65,9 @@ while( count( $minmatrise ) > 1 )
 /* Annonserer vinneren */
 if( count( $minmatrise ) > 0 )
 {
+	/* Får du en feilmelding for array_key_first? Det skyldes at php-versjonen i Docker er 7.2.33, mens array_key_first er tilgjengelig for >=7.3.0. */
+	echo "<p>Hvis feilmelding pga. PHP-versjon: Vinneren av konkurransen etter " . $runde . " runder er: "; print_r( $minmatrise ) . "</p>";
+
 	echo "<p>*** Vinneren av konkurransen etter " . $runde . " runder er: <strong>" . array_key_first( $minmatrise ) . "</strong></p>";
 }
 else

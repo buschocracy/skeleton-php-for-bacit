@@ -9,6 +9,6 @@ if ( isset( $_GET['etternavn'] ) )
 }
 else
 {
-	echo "Du må oppgi etternavn via en GET-variabel";
+	echo "Du må oppgi etternavn via en GET-variabel etternavn";
 }
 ?>

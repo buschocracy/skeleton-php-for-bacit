@@ -11,7 +11,14 @@ if ( $_GET['send'] == 'ja' )
 		'X-Mailer' => 'PHP/' . phpversion()
 	);
 
-	mail( $to, $subject, $message, $headers );
+	if ( mail( $to, $subject, $message, $headers ) )
+	{
+		echo "E-post er sendt";
+	}
+	else
+	{
+		echo "E-post ble ikke sendt pga. en feil"
+	}
 }
 else
 {

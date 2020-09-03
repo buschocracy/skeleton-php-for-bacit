@@ -13,7 +13,7 @@
 	/* Sammenlikner medlemstallene */
 	var_dump( $medlem1 == $medlem2 );
 	
-	/* Les gjerne litt om funksjonen var_dump på php.net (den er ofte nyttig) og analyser output */
+	/* Les gjerne litt om funksjonen var_dump på php.net (den er ofte nyttig) og analyserer output */
 ?>	
 </body>
 </html>

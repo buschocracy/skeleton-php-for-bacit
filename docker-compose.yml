@@ -30,5 +30,16 @@ services:
     - "mysql_data:/var/lib/mysql"
     # - ./data/schema.sql:/docker-entrypoint-initdb.d/schema.sql
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links: 
+      - db:db
+    ports:
+      - 8000:80
+    environment:
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: BACIT2020
+      MYSQL_ROOT_PASSWORD: BSBACIT2020
+
 volumes:
   mysql_data: { driver: local } 

@@ -1,6 +1,7 @@
 <?php
+echo 'hei';
 $tall1 = 7;
-$tall2 = 8;
+$tall2 = (boolean)8;
 
 for ( $i=0; $i < 10; $i++ )
 {

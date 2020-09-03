@@ -13,8 +13,8 @@
     $temp = $sek / 60;
 	echo "Slik ser delingstallet ut: " . $temp . "<br />";
     
-	/* Runder ned et desimaltall ved å konvertere til integer */
-    $antall_minutter = (int) $temp;
+	/* Runder ned et desimaltall */
+    $antall_minutter = floor( $temp );
 
     /* Modulo-operatoren brukes for å finne resten */
     $rest_sekunder = $sek % 60;

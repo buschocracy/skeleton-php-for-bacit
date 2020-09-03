@@ -15,13 +15,6 @@ define('AUTH_TABLE', 'is115_users');
  *
  */
 class Auth extends User {
-	
-    /**
-     * Auth id.
-     * @var int
-     */
-    public $id					= "";
-
 
    /**
     * Check if user is authenticated.
@@ -32,7 +25,9 @@ class Auth extends User {
     function isAuthenticated( )
     {
 		/* Checking $_SESSION variable */
-		if ( isset( $_SESSION['brukernavn'] ) )
+		if ( isset( $_SESSION['user']['id'] ) && 
+			 isset( $_SESSION['user']['username'] ) && 
+			 isset( $_SESSION['user']['firstname'] ) )
 		{
 			return true;
 		}

@@ -1,0 +1,50 @@
+<!DOCTYPE html> <html> <table border="1">
+<?php
+    $fornavn = "André";  $etternavn = "Halvorsen";  $adresse = "Kvernveien 26B";  $mobil = "90813325";  $epost = "andre.b.h@hotmail.com";   $fdato = "04.12.1997";  $kjønn = "mann";    $interesser = "fotball";    $kaktiviteter = "web-programering"; $medlemsiden = "12.08.2018";    $kontigentstatus = "aktiv";
+    print  
+"<tr>
+    <td>Fornavn</td>
+    <td>$fornavn</td>
+</tr>
+<tr>
+    <td>Etternavn</td>
+    <td>$etternavn</td>
+</tr>
+<tr>
+    <td>Adresse</td>
+    <td>$adresse</td>
+</tr>
+<tr>
+    <td>Mobilnummer</td>
+    <td>$mobil</td>
+</tr>
+<tr>
+    <td>E-post</td>
+    <td>$epost</td>
+</tr>
+<tr>
+    <td>Fødselsdato</td>
+    <td>$fdato</td>
+</tr>
+<tr>
+    <td>Kjønn</td>
+    <td>$kjønn</td>
+</tr>
+<tr>
+    <td>Interesser</td>
+    <td>$interesser</td>
+</tr>
+<tr>
+    <td>Kursaktiviteter</td>
+    <td>$kaktiviteter</td>
+</tr>
+<tr>
+    <td>Medlem siden dato</td>
+    <td>$medlemsiden</td>
+</tr>
+<tr>
+    <td>Kontigentstatus</td>
+    <td>$kontigentstatus</td>
+</tr>
+</table>";
+?>

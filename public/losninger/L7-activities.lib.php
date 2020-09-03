@@ -8,13 +8,13 @@ Last Update: Aug 13, 2020
 ************************************************/
 
 /* Defining constants for this class */
-define('CLASS_TABLE', 'neo_users');
+define('CLASS_TABLE', 'is115_activities');
 
 /**
- * The User class provides shared functionality used for handling of users.
+ * The Activity class provides shared functionality used for handling of activities.
  *
  */
-class User {
+class Activity {
 	
     /**
      * User id.
@@ -22,159 +22,39 @@ class User {
      */
     public $id					= "";
 
-    /**
-     * Revoke status for user.
-     * @var int
+	/**
+     * Timestamp.
+     * @var UNIX timestamp
      */
-    public $rvkd				= "";
+    private $startTime			= "";
 
 	/**
      * Timestamp.
      * @var UNIX timestamp
      */
-    private $dateCreated		= "";
-
-	/**
-     * Timestamp.
-     * @var UNIX timestamp
-     */
-    private $dateEdited			= "";
+    private $endTime			= "";
 	
     /**
-     * Username.
-     * @var string
-     */
-    public $username			= "";
-
-    /**
-     * User password.
-     * @var string
-     */
-    public $passw				= "";
-
-    /**
-     * User firstname.
-     * @var string
-     */
-    public $firstname			= "";
-
-    /**
-     * User lastname.
-     * @var text
-     */
-    public $lastname			= "";
-
-    /**
-     * User fullname.
-     * @var string
-     */
-    public $fullname			= "";
-
-    /**
-     * User title.
+     * Title.
      * @var string
      */
     public $title				= "";
 
     /**
-     * User affiliation department.
+     * Description.
      * @var string
      */
-    public $affiliation_dep		= "";
+    public $description			= "";
 
     /**
-     * User affiliation organization.
+     * Location.
      * @var string
      */
-    public $affiliation_org		= "";
-
-    /**
-     * User region.
-     * @var string
-     */
-    public $region				= "";
-
-    /**
-     * User country.
-     * @var string
-     */
-    public $country				= "";
-
-    /**
-     * User email.
-     * @var string
-     */
-    public $email				= "";
-
-    /**
-     * User cellphone.
-     * @var string
-     */
-    public $cellphone			= "";
-
-    /**
-     * User registration code.
-     * @var string
-     */
-    public $regcode				= "";
-	
-    /**
-     * User ORCID_ID.
-     * @var string
-     */
-    public $ORCID_ID			= "";
-
-    /**
-     * User ORCID_access_token.
-     * @var string
-     */
-    public $ORCID_access_token	= "";
-
-    /**
-     * User ORCID_refresh_token.
-     * @var string
-     */
-    public $ORCID_refresh_token	= "";
-
-    /**
-     * User ORCID_address.
-     * @var string
-     */
-    public $ORCID_address		= "";
-
-    /**
-     * User ORCID_keywords.
-     * @var string
-     */
-    public $ORCID_keywords		= "";
-
-    /**
-     * User ORCID_researcher-urls.
-     * @var string
-     */
-    public $ORCID_researcher_urls = "";
-
-    /**
-     * User ORCID_employments.
-     * @var string
-     */
-    public $ORCID_employments	= "";
-
-    /**
-     * User ORCID_peer-reviews.
-     * @var string
-     */
-    public $ORCID_peer_reviews	= "";
-
-    /**
-     * User ORCID_works.
-     * @var string
-     */
-    public $ORCID_works			= "";
+    public $location			= "";
 
 	
    /**
-    * Prepare add user to database.
+    * Prepare add to database.
     *
     * @return mixed					Returns boolean true (success) and string (error).
 
@@ -219,7 +99,7 @@ class User {
 	
 	
    /**
-    * Add user to database.
+    * Add to database.
     *
     * @return mixed					Returns boolean true (success) and string (error).
 
@@ -294,7 +174,7 @@ class User {
 
 	
    /**
-    * Prepare edit user.
+    * Prepare edit.
     *
     * @return mixed					Returns boolean true (success) and string (error).
 
@@ -335,7 +215,7 @@ class User {
 
     /**
 	 * OK-
-     * Update user profile.
+     * Update database.
 	 *
      * @return boolean				Returns true on success and false on failure.
      */
@@ -415,7 +295,7 @@ class User {
 	
 	/**
 	 * OK-
-     * Prepare get list of users.
+     * Prepare get list of records.
      *
      * @param array $paramsSelection      The non-associative array with all neccessary data for the selection part of the query.
      * @param array $paramsWhere          The multidimensional associative array with all neccessary data for the where part of the query.
@@ -457,7 +337,7 @@ class User {
 				$query .= " LIMIT " . $limit;
 			}
 			
-			//echo $query;
+			//echo $query . "<br />";
 			
 			/* Prepare statement */
 			$stmt = $connection->prepare( $query );
@@ -481,7 +361,7 @@ class User {
 			
 	/**
 	 * OK-
-     * Get a list of users.
+     * Get a list of records.
      *
      * @param array $paramsWhere          The multidimensional associative array with all neccessary data for the where part of the query.
 	 *
@@ -565,56 +445,6 @@ class User {
 		else
 		{
 			return false;
-		}
-    }
-
-
-    /**
-     * Validate password.
-     *
-     * @param string pwd  				Password to be validated.
-	 *
-     * @return boolean        			Returns true on success and false on failure.
-     */
-    function validatePassword( $pwd )
-    {
-		/* Define array */
-		$opMessage = array();
-		
-		/* Preg match string */
-		$uppercase 		= preg_match( '@[A-Z]@', $pwd );
-		$lowercase 		= preg_match( '@[a-z]@', $pwd );
-		$number    		= preg_match( '@[0-9]@', $pwd );
-		$specialChars 	= preg_match( '@[^\w]@', $pwd );
-		
-		if ( !$uppercase )
-		{
-			$opMessage[] = "Password must include at least one upper case letter";
-		}
-		if ( !$lowercase )
-		{
-			$opMessage[] = "Password must include at least one lower case letter";
-		}
-		if ( !$number )
-		{
-			$opMessage[] = "Password must include at least one number";
-		}
-		if ( !$specialChars )
-		{
-			$opMessage[] = "Password must include at least one special character.";
-		}
-		if ( strlen( $pwd ) < 8 )
-		{
-			$opMessage[] = "Password must be at least 8 characters in length.";
-		}
-		
-		if ( $opMessage )
-		{
-			return $opMessage;
-		}
-		else
-		{
-			return true;
 		}
     }
 

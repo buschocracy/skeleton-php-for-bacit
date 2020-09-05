@@ -9,14 +9,14 @@
 	/* Include required classes */
 	require_once 'L7-activities.lib.php';
 
-	/* Find members */				
+	/* Find activities */				
 	$activity = new Activity;
 	$paramsSelection = array( 'ID', 'startTime', 'endTime', 'title', 'description', 'location' );
 	$paramsWhere = array( '>' => array( 'endTime' => date( 'Y-m-d H:i:s') ) ); // endTime > now
 	$stmt = $activity->pget( $paramsSelection, $paramsWhere, $connection );
 	$resultget = $activity->get( $stmt, $paramsWhere );
 
-	/* Check if database contains members */
+	/* Check if database contains activities */
 	if ( count( $resultget ) > 0 )
 	{
 		/* Build table - begin */
@@ -44,7 +44,7 @@
 	}
 	else 
 	{
-		/* No members in database */
+		/* No activities in database */
 		echo "Databasen inneholder ingen aktiviteter. Du kan kanskje lage noen? :)";
 	}
 ?>

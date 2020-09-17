@@ -12,7 +12,7 @@ for ( $i=1; $i<=15; $i++ )
 }
 sort( $lodd );
 
-echo 'Ditt lodd er: ' . implode( ' ', $lodd ) . '<br>';
+echo 'Dine lodd er: ' . implode( ' ', $lodd ) . '<br>';
 
 $vinnerlodd = rand(1, 100);
 

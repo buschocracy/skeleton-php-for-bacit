@@ -15,14 +15,7 @@ if ( isset( $_POST['contact-send'] ) )
 	
 	if ( empty ($messages) )
 	{
-		echo 'Takk, det er fint!';
-	}
-	else
-	{
-		for( $i=0; $i < count($messages); $i++ )
-		{
-			echo $messages[$i] . '<br>';
-		}
+		$messages[] = 'Takk, det er fint!';
 	}
 }
 ?>
@@ -35,6 +28,14 @@ if ( isset( $_POST['contact-send'] ) )
 
 <body>
 	<form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+		<p><?php 
+			if ( !empty($messages) ) { 
+				foreach( $messages as $key => $message )
+				{
+					echo $message . '<br>';
+				}
+			} 
+		?>
 		<p>
 			<label for="contact-name">Name</label>
 			<input name="contact-name" type="text" value="<?php if ( isset( $_POST['contact-name'] ) ) { echo $_POST['contact-name']; } ?>">
